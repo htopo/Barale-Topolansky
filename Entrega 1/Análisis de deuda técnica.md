@@ -9,6 +9,52 @@ Para este análisis, llevamos a cabo dos actividades:
 
 A medida que se ejecutaron estas actividades, fuimos generando issues en el repositorio, donde se puede ver en detalle la deuda técnica encontrada.
 
+
+## Testing exploratorio
+
+* Objetivo: Evaluar el funcionamiento de la aplicación e identificar errores en caso de haberlos.
+* Fecha: 10/04/2023
+* Tester: Agustin
+* Descripción de la tarea: Se usará la aplicación, simulando ser usuarios de distintos roles, intentando usar las diferentes características que provee la aplicación, de esta manera podremos identificar errores y reportarlos.
+* Duración: 3 horas.
+* Ambiente de Prueba: Windows 10, Chrome
+* Conclusiones: Se intentó simular diferentes casuísticas de uso de la aplicación, y se encontraron varios errores, los cuales se describen y categorizan a continuación (algunos de los errores pueden pertenecer a más de una categoría):
+
+### Errores de inconsistencia en el idioma de la aplicación:
+
+Se encontraron varias inconsistencias en el idioma de la aplicación, ya que en algunos casos se encontraban textos en inglés, y en otros en español. Los errores encontrados son los siguientes:
+
+- En los filtros dice filters en lugar de filtros.
+- Boton de inicio de sesión en inglés.
+- Error de inicio de sesión al ingresar datos incorrectos en inglés.
+- Al cambiar la contraseña de un usuario, al intentar utilizar la contraseña anterior, el sistema muestra un error en inglés que dice "The password is incorrect".
+- Al intentar borrar algo, ya sea un concierto, un artista, un genero, una banda, un solista o un usuario, los botones de confirmar o cancelar el borrado están en inglés.
+- En la sección de mis datos, dice change data, en lugar de cambiar datos.
+- En la sección de cambiar contraseña, dice change password, en lugar de cambiar contraseña.
+
+### Errores gramaticales:
+
+- Falta tilde en Administración.
+- En la confirmación del borrado, al texto "Estas seguro que deseas borrar?" le falta el signo de apertura de interrogación.
+- Falta el tilde en la palabra Género en casi todos lados, a excepción del botón que lleva a la sección de géneros.
+- Cuando se ingresa a la pantalla para agregar algo, el titulo dice insertar en lugar de agregar.
+
+### Errores de usabilidad:
+
+- No funciona el registro de usuarios.
+- Al cambiar la contraseña de un usuario, se limpian los campos contraseña anterior y nueva contraseña, pero no el campo confirmar contraseña.
+- Para ciertos roles de usuario no se precargan los datos personales en la sección Mis datos, y para dichos casos no se puede ingresar información, ya que da un internal server error.
+- El importador/exportador de conciertos no funciona.
+- Al cambiar la contraseña de un usuario o sus datos, no redirecciona a la página principal, lo cual es confuso para el usuario y poco intuitivo, ya que normalmente un usuario solo cambia su contraseña o datos una vez.
+- Si se inicia una sesión como rol artista, no se puede cerrar sesión.
+
+### Errores de interfaz:
+
+- Al intentar crear un usuario, concierto, solista o usuario y no se ingresan todos los datos, el sistema no muestra un mensaje de error que no especifica nada y dice [object Object].
+- Se exponen los ids de las entidades en la página.
+- Al cambiar datos de un usuario, sin ingresar nuevos datos, se muestra un mensaje de éxito.
+- No existe un botón para volver, lo cual no hace que la navegación sea intuitiva.
+
 ## Análisis de calidad de código de frontend
 
 Para este análisis utilizamos la herramienta tslint, que es un analizador estático de código para typescript.
@@ -39,6 +85,7 @@ En cuanto a la api, se encontró un uso redundante de los filtros ciertos casos.
 Por otro lado, se encontró un posible riesgo de seguridad en la api, dado que el token de las sesiones es generado por la función GenerateRandomToken() que utiliza la función Random() de C#. Esta función genera números pseudoaleatorios que son predecibles, lo que facilita a los atacantes adivinar el token. Además, el conjunto de caracteres utilizado para generar el token no es suficiente.
 
 Se crearon los siguientes issues para darle seguimiento a estos problemas de backend:
+
 * “Mejorar manejo de excepciones” - Para no capturar excepciones genericas.
 * “Refactorizar data access” - Para resolver el problema de código repetido.
 * “Refactorizar api” - Para quitar la redundancia en los filtros.
