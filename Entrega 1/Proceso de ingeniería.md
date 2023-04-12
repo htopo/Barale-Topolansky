@@ -8,5 +8,3 @@ Tambien adoptaremos ciertas partes de scrum a conveniencia. Para el comienzo del
 Además de los roles por defecto de desarrolladores y testers, definimos roles para cada miembro del equipo:
 Scrum Master: Hernán Topolansky - (Si bien estamos utilizando kanban, para realizar la retro entendimos que era necesario tener un scrum master)
 Product Owner: Agustín Barale
-
-Pequeña guía de "Creación y posterior mantenimiento del repositorio: elementos que contiene y cómo los van a versionar":
