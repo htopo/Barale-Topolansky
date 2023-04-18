@@ -29,6 +29,6 @@ jobs:
       if: always()
       with:
         name: DotNET Tests
-        path: "**/test-results.trx"                            
+        path: "/home/runner/work/Barale-Topolansky/Barale-Topolansky/Codigo/ArenaGestor/Test/ArenaGestor.APITest/TestResults/test-results.trx"
         reporter: dotnet-trx
         fail-on-error: true
