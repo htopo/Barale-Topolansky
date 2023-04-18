@@ -22,7 +22,7 @@ jobs:
       run: dotnet build Codigo/ArenaGestor/ArenaGestor.sln --configuration Release
 
     - name: Test
-      run: dotnet test --logger "trx;LogFileName=test-results.trx" || true
+      run: dotnet test Codigo/ArenaGestor/ArenaGestor.sln --logger "trx;LogFileName=test-results.trx" || true
 
     - name: Test Report
       uses: dorny/test-reporter@v1
