@@ -1,4 +1,4 @@
-#Configuración del pipeline y su vínculo con el tablero:
+# Configuración del pipeline y su vínculo con el tablero:
 
 Cuando un ticket pasa de `Refactoring` a `In review`, el desarrollador a cargo debe abrir un pull request en github, desde la rama en la que se está trabajando a `develop`. Al abrirlo, el desarrollador se encuentra con que deben cumplirse dos condiciones para poder hacer el merge. Estas condiciones son reglas que agregan al repositorio en github.
 En primer lugar, las github actions configuradas deben terminar de ejecutarse y tener un resultado exitoso. Estas consisten en disparar un build y los tests automáticos, por lo que no debe haber errores de compilación y deben pasar todos los tests.
