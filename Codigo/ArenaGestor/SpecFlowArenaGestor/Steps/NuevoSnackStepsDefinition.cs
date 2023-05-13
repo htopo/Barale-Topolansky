@@ -64,7 +64,7 @@ namespace SpecFlowArenaGestor.Steps
             }
         }
 
-        [Then(@"Veo el mensaje de éxito con el código ""(.*)""")]
+        [Then(@"Veo el mensaje de éxito con código ""(.*)""")]
         public void ThenISeeTheSuccessMessageWitStatusCode(int statusCode)
         {
             Assert.Equal(statusCode, (int)context.Get<HttpStatusCode>("ResponseStatusCode"));

@@ -19,7 +19,7 @@ namespace SpecFlowArenaGestor.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class CrearSnackFeature : object, Xunit.IClassFixture<CrearSnackFeature.FixtureData>, System.IDisposable
+    public partial class BorrarSnackFeature : object, Xunit.IClassFixture<BorrarSnackFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace SpecFlowArenaGestor.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "AddSnack.feature"
+#line 1 "RemoveSnack.feature"
 #line hidden
         
-        public CrearSnackFeature(CrearSnackFeature.FixtureData fixtureData, SpecFlowArenaGestor_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public BorrarSnackFeature(BorrarSnackFeature.FixtureData fixtureData, SpecFlowArenaGestor_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,8 +40,8 @@ namespace SpecFlowArenaGestor.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Crear snack", "    Como administrador del sistema\r\n    Quiero poder agregar un nuevo snack con d" +
-                    "escripción y precio obligatorios \r\n    Para poder verlo en el sistema", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Borrar snack", "    Como administrador del sistema\r\n    Quiero poder eliminar un snack\r\n    Para " +
+                    "poder mantener actualizado el catálogo de productos", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -81,16 +81,16 @@ namespace SpecFlowArenaGestor.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Crear válido con todos los datos")]
-        [Xunit.TraitAttribute("FeatureTitle", "Crear snack")]
-        [Xunit.TraitAttribute("Description", "Crear válido con todos los datos")]
-        [Xunit.TraitAttribute("Category", "creacionValida")]
-        public virtual void CrearValidoConTodosLosDatos()
+        [Xunit.SkippableFactAttribute(DisplayName="Eliminar un snack correctamente")]
+        [Xunit.TraitAttribute("FeatureTitle", "Borrar snack")]
+        [Xunit.TraitAttribute("Description", "Eliminar un snack correctamente")]
+        [Xunit.TraitAttribute("Category", "eliminarSnack")]
+        public virtual void EliminarUnSnackCorrectamente()
         {
             string[] tagsOfScenario = new string[] {
-                    "creacionValida"};
+                    "eliminarSnack"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Crear válido con todos los datos", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Eliminar un snack correctamente", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -112,16 +112,13 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 8
-    testRunner.Given("El nombre \"Doritos\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("Un snack con el nombre \"lays\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 9
-    testRunner.And("El precio \"200\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.When("Elimino un \"Snacks\" con ese nombre", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
-    testRunner.When("Creo un \"Snacks\" con esos valores", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 11
-    testRunner.Then("Veo el mensaje de éxito con código \"201\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("Veo el mensaje de éxito con el código \"200\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -134,12 +131,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             public FixtureData()
             {
-                CrearSnackFeature.FeatureSetup();
+                BorrarSnackFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                CrearSnackFeature.FeatureTearDown();
+                BorrarSnackFeature.FeatureTearDown();
             }
         }
     }

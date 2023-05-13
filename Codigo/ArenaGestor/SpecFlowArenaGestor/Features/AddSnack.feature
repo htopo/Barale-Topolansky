@@ -8,4 +8,4 @@ Scenario: Crear válido con todos los datos
     Given El nombre "Doritos"
     And El precio "200"
     When Creo un "Snacks" con esos valores
-    Then Veo el mensaje de éxito con el código "201"
+    Then Veo el mensaje de éxito con código "201"

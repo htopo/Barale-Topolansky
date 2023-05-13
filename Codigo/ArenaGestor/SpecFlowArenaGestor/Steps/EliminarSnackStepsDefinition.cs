@@ -19,7 +19,7 @@ namespace SpecFlowArenaGestor.Steps
             this.context = context;
         }
 
-        [Given(@"El nombre ""(.*)""")]
+        [Given(@"Un snack con el nombre ""(.*)""")]
         public void GivenTheName(string name)
         {
             this.Name = name;
@@ -28,18 +28,7 @@ namespace SpecFlowArenaGestor.Steps
         [When(@"Elimino un ""(.*)"" con ese nombre")]
         public async Task WhenIPostThisRequestToTheOperation(string operation)
         {
-            string requestBody = JsonConvert.SerializeObject(new { name = Name, price = Price});
-
-            var request = new HttpRequestMessage(HttpMethod.Post, $"https://localhost:5001/{operation}")
-            {
-                Content = new StringContent(requestBody)
-                {
-                    Headers =
-                        {
-                          ContentType = new MediaTypeHeaderValue("application/json")
-                        }
-                }
-            };
+            var request = new HttpRequestMessage(HttpMethod.Delete, $"https://localhost:5001/{operation}/{this.Name}") { };
             // create an http client
             var client = new HttpClient();
             // let's post
