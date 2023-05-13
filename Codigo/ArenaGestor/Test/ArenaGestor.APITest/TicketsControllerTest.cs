@@ -185,7 +185,7 @@ namespace ArenaGestor.APITest
         [TestMethod]
         public void BuyTicketOkTest()
         {
-            mock.Setup(x => x.BuyTicket(It.IsAny<string>(), It.IsAny<TicketBuy>())).Returns(It.IsAny<Ticket>());
+            mock.Setup(x => x.BuyTicket(It.IsAny<string>(), It.IsAny<TicketBuy>(), It.IsAny<List<SnackBuy>>())).Returns(It.IsAny<Ticket>());
             mockMapper.Setup(x => x.Map<TicketBuy>(It.IsAny<TicketBuyTicketDto>())).Returns(It.IsAny<TicketBuy>());
 
             mockMapper.Setup(x => x.Map<TicketBuyTicketResultDto>(It.IsAny<Ticket>())).Returns(It.IsAny<TicketBuyTicketResultDto>());
