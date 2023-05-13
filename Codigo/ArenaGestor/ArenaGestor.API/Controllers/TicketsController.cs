@@ -17,11 +17,13 @@ namespace ArenaGestor.API.Controllers
 
         private readonly ITicketService ticketService;
         private readonly IMapper mapper;
+        private Map map;
 
         public TicketsController(ITicketService ticketService, IMapper mapper)
         {
             this.ticketService = ticketService;
             this.mapper = mapper;
+            this.map = new Map();
         }
 
         [AuthorizationFilter(RoleCode.Vendedor)]
@@ -40,8 +42,9 @@ namespace ArenaGestor.API.Controllers
         {
             var token = this.HttpContext.Request.Headers["token"];
 
-            var ticketBuy = mapper.Map<TicketBuy>(buyTicket);
-            Ticket ticket = ticketService.BuyTicket(token, ticketBuy);
+            var ticketBuy = map.dtoToTicketBuy(buyTicket);
+            var snacksBuy = map.dtoToSnacksBuy(buyTicket);
+            Ticket ticket = ticketService.BuyTicket(token, ticketBuy, snacksBuy);
             var resultDto = mapper.Map<TicketBuyTicketResultDto>(ticket);
             return Ok(resultDto);
         }
