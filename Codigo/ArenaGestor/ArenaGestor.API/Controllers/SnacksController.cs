@@ -26,7 +26,7 @@ namespace ArenaGestor.API.Controllers
             this.mapper = mapper;
         }
 
-        //[AuthorizationFilter(RoleCode.Administrador)]
+        [AuthorizationFilter(RoleCode.Administrador)]
         [HttpPost]
         public IActionResult PostSnack([FromBody] SnackInsertSnackDto insertSnack)
         {
@@ -36,7 +36,7 @@ namespace ArenaGestor.API.Controllers
             return Created("/snacks",resultDto);
         }
 
-        //[AuthorizationFilter(RoleCode.Administrador)]
+        [AuthorizationFilter(RoleCode.Administrador)]
         [HttpDelete("{snackName}")]
         public IActionResult DeleteSnack([FromRoute] string snackName)
         {
