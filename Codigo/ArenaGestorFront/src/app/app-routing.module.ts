@@ -35,6 +35,8 @@ import { ProtagonistBandsComponent } from './routes/protagonist/protagonist.band
 import { ProtagonistSoloistsComponent } from './routes/protagonist/protagonist.soloists.component';
 import { ProtagonistBandComponent } from './routes/protagonist/protagonist.band.component';
 import { ProtagonistSoloistComponent } from './routes/protagonist/protagonist.soloist.component';
+import { SnackComponent } from './routes/snack/snack.component';
+import { SnackInsertComponent } from './routes/snack/snack-insert.component';
 
 const routes: Routes = [
 
@@ -62,6 +64,8 @@ const routes: Routes = [
   { path: 'administracion/usuarios', component: UserComponent, canActivate: [AuthGuard], data: { roles: ['Administrador'] } },
   { path: 'administracion/usuarios/insertar', component: UserInsertComponent, canActivate: [AuthGuard], data: { roles: ['Administrador'] } },
   { path: 'administracion/usuarios/editar/:id', component: UserUpdateComponent, canActivate: [AuthGuard], data: { roles: ['Administrador'] } },
+  { path: 'administracion/snacks', component: SnackComponent, canActivate: [AuthGuard], data: { roles: ['Administrador'] } },
+  { path: 'administracion/snacks/insertar', component: SnackInsertComponent, canActivate: [AuthGuard], data: { roles: ['Administrador'] } },
   { path: 'administracion/importarexportar', component: ImportexportComponent, canActivate: [AuthGuard], data: { roles: ['Administrador'] } },
   { path: 'administracion/conciertos', component: ConcertComponent, canActivate: [AuthGuard], data: { roles: ['Administrador'] } },
   { path: 'administracion/conciertos/insertar', component: ConcertInsertComponent, canActivate: [AuthGuard], data: { roles: ['Administrador'] } },
