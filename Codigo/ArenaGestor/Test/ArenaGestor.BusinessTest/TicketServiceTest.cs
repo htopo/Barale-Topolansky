@@ -16,6 +16,7 @@ namespace ArenaGestor.BusinessTest
         private Mock<IConcertsService> concertServiceMock;
         private Mock<ITicketStatusManagement> ticketStatusManagementMock;
         private TicketService ticketService;
+        private Mock<ISnackBuyService> snackService;
 
         private Mock<ISecurityService> securityServiceMock;
 
@@ -51,7 +52,9 @@ namespace ArenaGestor.BusinessTest
 
             securityServiceMock = new Mock<ISecurityService>(MockBehavior.Strict);
 
-            ticketService = new TicketService(concertServiceMock.Object, managementMock.Object, ticketStatusManagementMock.Object, securityServiceMock.Object);
+            snackService = new Mock<ISnackBuyService>(MockBehavior.Strict);
+
+            ticketService = new TicketService(concertServiceMock.Object, managementMock.Object, ticketStatusManagementMock.Object, securityServiceMock.Object, snackService.Object);
 
             nullConcert = null;
 
@@ -357,7 +360,7 @@ namespace ArenaGestor.BusinessTest
             securityServiceMock.Setup(x => x.GetUserOfToken(It.IsAny<string>())).Returns(userNull);
             concertServiceMock.Setup(x => x.GetConcertById(It.IsAny<int>())).Returns(concertOk);
 
-            Ticket ticket = ticketService.BuyTicket(It.IsAny<string>(), ticketBuyInvalidUser);
+            Ticket ticket = ticketService.BuyTicket(It.IsAny<string>(), ticketBuyInvalidUser, new List<SnackBuy>());
         }
 
         [ExpectedException(typeof(NullReferenceException))]
@@ -373,7 +376,7 @@ namespace ArenaGestor.BusinessTest
             securityServiceMock.Setup(x => x.GetUserOfToken(It.IsAny<string>())).Returns(userOk);
 
             concertServiceMock.Setup(x => x.GetConcertById(It.IsAny<int>())).Returns(nullConcert);
-            Ticket ticket = ticketService.BuyTicket(It.IsAny<string>(), ticketBuyInvalidConcert);
+            Ticket ticket = ticketService.BuyTicket(It.IsAny<string>(), ticketBuyInvalidConcert, new List<SnackBuy>());
         }
 
         [ExpectedException(typeof(ArgumentException))]
@@ -389,7 +392,7 @@ namespace ArenaGestor.BusinessTest
             securityServiceMock.Setup(x => x.GetUserOfToken(It.IsAny<string>())).Returns(userOk);
 
             concertServiceMock.Setup(x => x.GetConcertById(It.IsAny<int>())).Returns(concertFullTickets);
-            Ticket ticket = ticketService.BuyTicket(It.IsAny<string>(), ticketBuyNoMoreTickets);
+            Ticket ticket = ticketService.BuyTicket(It.IsAny<string>(), ticketBuyNoMoreTickets, new List<SnackBuy>());
         }
 
         [TestMethod]
@@ -408,7 +411,7 @@ namespace ArenaGestor.BusinessTest
             concertServiceMock.Setup(x => x.GetConcertById(It.IsAny<int>())).Returns(concertOk);
             managementMock.Setup(x => x.InsertTicket(It.IsAny<Ticket>()));
             managementMock.Setup(x => x.Save());
-            Ticket ticket = ticketService.BuyTicket(It.IsAny<string>(), ticketBuyOK);
+            Ticket ticket = ticketService.BuyTicket(It.IsAny<string>(), ticketBuyOK, new List<SnackBuy>());
             concertServiceMock.VerifyAll();
             managementMock.VerifyAll();
         }
@@ -426,7 +429,7 @@ namespace ArenaGestor.BusinessTest
             securityServiceMock.Setup(x => x.GetUserOfToken(It.IsAny<string>())).Returns(userOk);
 
             concertServiceMock.Setup(x => x.GetConcertById(It.IsAny<int>())).Returns(concertOk);
-            Ticket ticket = ticketService.BuyTicket(It.IsAny<string>(), ticketBuyNoMoreTickets);
+            Ticket ticket = ticketService.BuyTicket(It.IsAny<string>(), ticketBuyNoMoreTickets, new List<SnackBuy>());
         }
 
         [ExpectedException(typeof(ArgumentException))]
@@ -440,7 +443,7 @@ namespace ArenaGestor.BusinessTest
             };
 
 
-            Ticket ticket = ticketService.BuyTicket("", ticketBuyOK);
+            Ticket ticket = ticketService.BuyTicket("", ticketBuyOK, new List<SnackBuy>());
         }
 
         [TestMethod]
@@ -458,7 +461,7 @@ namespace ArenaGestor.BusinessTest
             concertServiceMock.Setup(x => x.GetConcertById(It.IsAny<int>())).Returns(concertOk);
             managementMock.Setup(x => x.InsertTicket(It.IsAny<Ticket>()));
             managementMock.Setup(x => x.Save());
-            Ticket ticket = ticketService.BuyTicket(It.IsAny<string>(), ticketBuyOK);
+            Ticket ticket = ticketService.BuyTicket(It.IsAny<string>(), ticketBuyOK, new List<SnackBuy>());
             concertServiceMock.VerifyAll();
             managementMock.VerifyAll();
         }
@@ -469,7 +472,7 @@ namespace ArenaGestor.BusinessTest
         {
             ticketBuyNull = null;
 
-            Ticket ticket = ticketService.BuyTicket("", ticketBuyNull);
+            Ticket ticket = ticketService.BuyTicket("", ticketBuyNull, new List<SnackBuy>());
         }
 
     }

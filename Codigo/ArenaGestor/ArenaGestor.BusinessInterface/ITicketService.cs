@@ -7,7 +7,7 @@ namespace ArenaGestor.BusinessInterface
     public interface ITicketService
     {
         Ticket SellTicket(TicketSell ticketSell);
-        Ticket BuyTicket(string token, TicketBuy ticketBuy);
+        Ticket BuyTicket(string token, TicketBuy ticketBuy, List<SnackBuy> snackBuys);
         Ticket ScanTicket(Guid ticketId);
         IEnumerable<Ticket> GetTicketsByUser(string token);
     }

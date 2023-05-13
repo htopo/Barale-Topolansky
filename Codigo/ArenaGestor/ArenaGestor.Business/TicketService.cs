@@ -13,13 +13,15 @@ namespace ArenaGestor.Business
         private ITicketManagement ticketManagement;
         private ITicketStatusManagement ticketStatusManagement;
         private ISecurityService securityService;
+        private ISnackBuyService snackBuyService;
 
-        public TicketService(IConcertsService concertService, ITicketManagement ticketManagement, ITicketStatusManagement ticketStatusManagement, ISecurityService securityService)
+        public TicketService(IConcertsService concertService, ITicketManagement ticketManagement, ITicketStatusManagement ticketStatusManagement, ISecurityService securityService, ISnackBuyService snackBuyService)
         {
             this.concertService = concertService;
             this.ticketManagement = ticketManagement;
             this.ticketStatusManagement = ticketStatusManagement;
             this.securityService = securityService;
+            this.snackBuyService = snackBuyService;
         }
 
         public Ticket SellTicket(TicketSell ticketSell)
@@ -72,7 +74,7 @@ namespace ArenaGestor.Business
             return ticket;
         }
 
-        public Ticket BuyTicket(string token, TicketBuy ticketBuy)
+        public Ticket BuyTicket(string token, TicketBuy ticketBuy, List<SnackBuy> snackList)
         {
             if (ticketBuy == null)
             {
@@ -118,6 +120,13 @@ namespace ArenaGestor.Business
                 TicketStatusId = ticketStatusManagement.GetStatus(TicketCode.Comprado).TicketStatusId,
                 Amount = ticketBuy.Amount
             };
+
+            foreach (var snack in snackList)
+            {
+                ticket.Amount += snack.Amount;
+                snack.TicketId = ticket.TicketId;
+                snackBuyService.InsertSnackBuy(snack);
+            }
 
             ticketManagement.InsertTicket(ticket);
             ticketManagement.Save();
