@@ -124,12 +124,19 @@ namespace ArenaGestor.Business
             foreach (var snack in snackList)
             {
                 ticket.Amount += snack.Amount;
-                snack.TicketId = ticket.TicketId;
+            }
+
+            Guid ticketId = ticketManagement.InsertTicket(ticket);
+            ticketManagement.Save();
+
+            foreach (var snack in snackList)
+            {
+                snack.SnackBuyId = Guid.NewGuid();
+                ticket.Amount += snack.Amount;
+                snack.TicketId = ticketId;
                 snackBuyService.InsertSnackBuy(snack);
             }
 
-            ticketManagement.InsertTicket(ticket);
-            ticketManagement.Save();
             return ticket;
         }
 
@@ -156,6 +163,11 @@ namespace ArenaGestor.Business
             var user = securityService.GetUserOfToken(token);
 
             return ticketManagement.GetTicketsByUser(user.Email);
+        }
+
+        public List<SnackBuy> GetSnackLines(Guid ticketId)
+        {
+            return snackBuyService.GetSnackLinesByTicketId(ticketId);
         }
 
     }

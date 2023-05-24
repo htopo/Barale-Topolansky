@@ -10,5 +10,6 @@ namespace ArenaGestor.BusinessInterface
     public interface ISnackBuyService
     {
         void InsertSnackBuy(SnackBuy snackbuy);
+        List<SnackBuy> GetSnackLinesByTicketId(Guid ticketId);
     }
 }

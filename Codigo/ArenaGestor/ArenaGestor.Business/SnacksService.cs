@@ -20,6 +20,14 @@ namespace ArenaGestor.Business
 
         public Snack InsertSnack(Snack snack)
         {
+            if (snack.Name == "" || snack.Price == 0)
+            {
+                throw new ArgumentException("Hay campos sin completar");
+            }
+            if (snacksManagement.GetSnackByName(snack.Name) != null)
+            {
+                throw new ArgumentException("It already exists a snack with that name");
+            }
             snacksManagement.InsertSnack(snack);
             snacksManagement.Save();
             return snack;
