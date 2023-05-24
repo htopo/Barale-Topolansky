@@ -1,6 +1,6 @@
 # Métricas
 
-### Nota:
+#### Nota:
 
 Dado que en las entregas anteriores no registramos fecha de entrada al backlog, fecha de inicio de trabajo y fecha de fin, para esta entrega vamos a agregar esta información a los en los issues (tanto en los bugs como en las user stories).
 
