@@ -10,6 +10,7 @@ namespace ArenaGestor.Domain
     public class SnackBuy
     {
         [Required]
+        public Guid SnackBuyId { get; set; }
         public Guid TicketId { get; set; }
         public string Name { get; set; }
         public int Amount { get; set; }

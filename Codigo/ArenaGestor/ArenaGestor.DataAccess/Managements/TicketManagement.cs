@@ -38,9 +38,10 @@ namespace ArenaGestor.DataAccess.Managements
             return tickets.Include(t => t.TicketStatus).Include(t => t.Concert).Where(t => t.Email == email);
         }
 
-        public void InsertTicket(Ticket ticket)
+        public Guid InsertTicket(Ticket ticket)
         {
             tickets.Add(ticket);
+            return ticket.TicketId;
         }
 
         public void UpdateTicket(Ticket ticket)
