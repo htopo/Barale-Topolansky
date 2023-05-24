@@ -7,11 +7,11 @@
             <div class="card-body">
                 <div class="mb-3">
                     <label class="form-label">Nombre</label>
-                    <input type="text" class="form-control" name="name" [(ngModel)]="model.name">
+                    <input type="text" class="form-control" name="name" [(ngModel)]="snackName">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Precio</label>
-                    <input type="text" class="form-control" name="price" [(ngModel)]="model.price">
+                    <input type="text" class="form-control" name="price" [(ngModel)]="snackPrice">
                 </div>
                 <button class="btn btn-primary btn-small " (click)="Confirmar()">Confirmar</button>
                 <a routerLink='/administracion/snacks' class="btn btn-danger btn-small ms-1 " role="button">Volver</a>

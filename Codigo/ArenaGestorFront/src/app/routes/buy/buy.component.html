@@ -19,4 +19,28 @@
             </div>
         </div>
     </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-header">
+                Agregar snacks
+            </div>
+            <div class="card-body">
+                <div class=" mb-3 ">
+                    <label class="form-label ">Snacks</label>
+                    <select class="form-select" name="snackName" [(ngModel)]="selectedSnack">
+                        <option *ngFor="let snack of snackList" [value]="snack.name">{{snack.name + "    $" + snack.price}}</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Cantidad del snack</label>
+                    <input type="number" class="form-control" name="snackAmmount" [(ngModel)]="snackAmount">
+                </div>
+                <ul>
+                    <li *ngFor="let item of buyedSnacks">{{ item.name + " x" + item.quantity}}</li>
+                </ul>
+                <div class="mb-3"> Precio de snacks: ${{totalAmount}}</div>
+                <button class="btn btn-primary btn-small" (click)="AgregarSnack()">Agregar</button>
+            </div>
+        </div>
+    </div>
 </div>
