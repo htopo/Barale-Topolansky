@@ -5,6 +5,7 @@ using ArenaGestor.BusinessInterface;
 using ArenaGestor.Domain;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 
 namespace ArenaGestor.API.Controllers
@@ -64,7 +65,17 @@ namespace ArenaGestor.API.Controllers
         {
             var token = this.HttpContext.Request.Headers["token"];
             var tickets = ticketService.GetTicketsByUser(token);
-            var resultDto = mapper.Map<IEnumerable<TicketGetTicketResultDto>>(tickets);
+            List<SnackBuy> snackBuys = new List<SnackBuy>();
+            foreach (var ticket in tickets)
+            {
+                snackBuys.AddRange(ticketService.GetSnackLines(ticket.TicketId));
+            }
+            var ticketResultDto = mapper.Map<IEnumerable<TicketGetTicketResultDto>>(tickets);
+            TicketSnackBuyDto resultDto = new TicketSnackBuyDto()
+            {
+                TicketDto = (List<TicketGetTicketResultDto>)ticketResultDto,
+                SnacksDto = map.snackBuyToDto(snackBuys),
+            };
             return Ok(resultDto);
         }
 
