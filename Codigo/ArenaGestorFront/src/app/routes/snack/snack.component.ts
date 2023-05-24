@@ -30,7 +30,7 @@ export class SnackComponent implements OnInit {
 
   Delete() {
     this.service.Delete(this.snackToDelete).subscribe(res => {
-      this.toastr.success("Usuario eliminado correctamente", "Éxito")
+      this.toastr.success("Snack eliminado correctamente", "Éxito")
       this.GetData();
     },
       err => {

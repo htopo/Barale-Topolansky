@@ -42,5 +42,25 @@ namespace ArenaGestor.API
             }
             return list;
         }
+
+        public List<SnackBuyLineDto> snackBuyToDto(List<SnackBuy> snackBuys)
+        {
+            var list = new List<SnackBuyLineDto>();
+            if (snackBuys != null)
+            {
+                foreach (var snackbuy in snackBuys)
+                {
+                    SnackBuyLineDto dto = new SnackBuyLineDto()
+                    {
+                        TicketId = snackbuy.TicketId,
+                        Amount = snackbuy.Amount,
+                        Name = snackbuy.Name,
+                        Quantity = snackbuy.Quantity,
+                    };
+                    list.Add(dto);
+                }
+            }
+            return list;
+        }
     }
 }

@@ -10,6 +10,7 @@ namespace ArenaGestor.DataAccessInterface
     public interface ISnackBuysManagement
     {
         void InsertSnackBuy(SnackBuy snackbuy);
+        List<SnackBuy> GetSnackBuysByTicketId(Guid ticketId);
         void Save();
     }
 }

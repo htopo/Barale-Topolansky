@@ -12,6 +12,7 @@ namespace ArenaGestor.DataAccessInterface
         void InsertSnack(Snack snack);
         void DeleteSnack(string snackName);
         List<Snack> GetAllSnacks();
+        Snack GetSnackByName(string snackName);
         void Save();
     }
 }
