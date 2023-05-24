@@ -167,6 +167,7 @@ namespace ArenaGestor.APITest
         public void GetTicketsOkTest()
         {
             mock.Setup(x => x.GetTicketsByUser(It.IsAny<string>())).Returns(ticketsOK);
+            mock.Setup(x => x.GetSnackLines(It.IsAny<Guid>())).Returns(new List<SnackBuy>());
             mockMapper.Setup(x => x.Map<IEnumerable<TicketGetTicketResultDto>>(ticketsOK)).Returns(ticketsResultDtoOk);
             api.ControllerContext = new ControllerContext
             {
