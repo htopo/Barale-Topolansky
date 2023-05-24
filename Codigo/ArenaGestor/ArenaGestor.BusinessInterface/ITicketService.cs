@@ -10,5 +10,6 @@ namespace ArenaGestor.BusinessInterface
         Ticket BuyTicket(string token, TicketBuy ticketBuy, List<SnackBuy> snackBuys);
         Ticket ScanTicket(Guid ticketId);
         IEnumerable<Ticket> GetTicketsByUser(string token);
+        List<SnackBuy> GetSnackLines(Guid ticketId);
     }
 }

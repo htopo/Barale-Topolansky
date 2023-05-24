@@ -23,6 +23,11 @@ namespace ArenaGestor.Business
             snacksBuyManagement.InsertSnackBuy(snackbuy);
             snacksBuyManagement.Save();
         }
-        
+
+        public List<SnackBuy> GetSnackLinesByTicketId(Guid ticketId)
+        {
+            return snacksBuyManagement.GetSnackBuysByTicketId(ticketId);
+        }
+
     }
 }

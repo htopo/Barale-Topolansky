@@ -1,4 +1,4 @@
 export class SnackInsertSnackDto {
     name: String = "";
-    price: Number = 0;
+    price: number = 0;
 }

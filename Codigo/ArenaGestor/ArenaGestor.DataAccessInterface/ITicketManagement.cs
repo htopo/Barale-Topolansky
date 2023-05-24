@@ -8,7 +8,7 @@ namespace ArenaGestor.DataAccessInterface
     {
         IEnumerable<Ticket> GetTickets(Func<Ticket, bool> filter);
         IEnumerable<Ticket> GetTickets();
-        void InsertTicket(Ticket ticket);
+        Guid InsertTicket(Ticket ticket);
         Ticket GetTicketById(Guid guid);
         void DeleteTicket(Ticket ticket);
         void UpdateTicket(Ticket ticket);

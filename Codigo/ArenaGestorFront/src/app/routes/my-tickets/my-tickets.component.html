@@ -21,3 +21,26 @@
         </tr>
     </tbody>
 </table>
+<div class="d-flex flex-row justify-content-between">
+    <div class="d-flex">
+        <h2>Snacks agregados</h2>
+    </div>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">TicketId</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Costo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let snack of snackList">
+            <td scope="col">{{snack.ticketId}}</td>
+            <td scope="col">{{snack.name}}</td>
+            <td scope="col">{{snack.quantity}}</td>
+            <td scope="col">{{snack.amount}}</td>
+        </tr>
+    </tbody>
+</table>

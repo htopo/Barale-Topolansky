@@ -25,6 +25,11 @@ namespace ArenaGestor.DataAccess.Managements
             snackbuys.Add(snackbuy);
         }
 
+        public List<SnackBuy> GetSnackBuysByTicketId(Guid ticketId)
+        {
+            return snackbuys.Where(sb => sb.TicketId == ticketId).ToList();
+        }
+
         public void Save()
         {
             context.SaveChanges();

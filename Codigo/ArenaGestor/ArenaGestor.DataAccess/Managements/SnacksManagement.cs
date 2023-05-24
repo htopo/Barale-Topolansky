@@ -36,6 +36,11 @@ namespace ArenaGestor.DataAccess.Managements
             return snacks.ToList();
         }
 
+        public Snack GetSnackByName(string snackName)
+        {
+            return snacks.Where(s => s.Name == snackName).FirstOrDefault();
+        }
+
         public void Save()
         {
             context.SaveChanges();

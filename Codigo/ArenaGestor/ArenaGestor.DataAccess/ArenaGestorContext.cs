@@ -52,7 +52,7 @@ namespace ArenaGestor.DataAccess
 
             modelBuilder.Entity<SnackBuy>(entity =>
             {
-                entity.HasKey(s => s.TicketId);
+                entity.HasKey(s => s.SnackBuyId);
             });
             modelBuilder.Entity<Snack>(entity =>
             {

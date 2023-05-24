@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ArenaGestor.Domain
+namespace ArenaGestor.APIContracts.Snacks
 {
-    public class SnackBuy
+    public class SnackBuyLineDto
     {
-        [Required]
-        public Guid SnackBuyId { get; set; }
         public Guid TicketId { get; set; }
-        public string Name { get; set; }
         public int Amount { get; set; }
         public int Quantity { get; set; }
+        public string Name { get; set; }
     }
 }

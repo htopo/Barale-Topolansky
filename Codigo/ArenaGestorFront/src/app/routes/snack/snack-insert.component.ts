@@ -11,6 +11,8 @@ export class SnackInsertComponent implements OnInit {
 
   mode: String = "Insertar";
   model: SnackInsertSnackDto = new SnackInsertSnackDto();
+  snackName: string = "";
+  snackPrice: string = "";
 
   constructor(private service: SnacksService, private toastr: ToastrService, private router: Router) { }
 
@@ -18,6 +20,16 @@ export class SnackInsertComponent implements OnInit {
   }
 
   Confirmar() {
+    if(this.snackName == "" || this.snackPrice == "") {
+      this.toastr.error("Hay datos sin completar", "Error")
+      return;
+    }
+    if(isNaN(parseInt(this.snackPrice))) {
+      this.toastr.error("El precio debe ser un valor numérico", "Error")
+      return;
+    }
+    this.model.name = this.snackName;
+    this.model.price = parseInt(this.snackPrice);
     this.service.Insert(this.model).subscribe(res => {
       this.toastr.success("Snack agregado correctamente", "Éxito")
       this.router.navigate(["/administracion/snacks"])

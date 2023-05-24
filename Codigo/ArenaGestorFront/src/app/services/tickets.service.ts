@@ -9,6 +9,7 @@ import { TicketBuyTicketDto } from '../models/Tickets/TicketBuyTicketDto';
 import { TicketBuyTicketResultDto } from '../models/Tickets/TicketBuyTicketResultDto';
 import { TicketSellTicketDto } from '../models/Tickets/TicketSellTicketDto';
 import { TicketSellTicketResultDto } from '../models/Tickets/TicketSellTicketResultDto';
+import { TicketSnackBuyDto } from '../models/Tickets/TicketSnackBuyDto';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +22,8 @@ export class TicketsService {
     this.apiUrl = environment.apiURL + "tickets"
   }
 
-  GetOfLoggedUser(): Observable<Array<TicketGetTicketResultDto>> {
-    return this.http.get<Array<TicketGetTicketResultDto>>(this.apiUrl)
+  GetOfLoggedUser(): Observable<TicketSnackBuyDto> {
+    return this.http.get<TicketSnackBuyDto>(this.apiUrl)
   }
 
   Scan(ticket: TicketScanTicketDto): Observable<TicketScanTicketResultDto> {
