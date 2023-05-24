@@ -4,4 +4,4 @@ Para nuestro tablero, esto se traduce en una columna nueva llamada “Integratio
 La evidencia de ejecución de estas pruebas se encuentra en el video de revisión de las nuevas funcionalidades y bugs reparados con el PO.
 En este video se realizan las pruebas integración de todos los escenarios de forma manual y luego con selenium.
 
-[Link al video](https://youtu.be/SVq4NG0guDg)
+[Link al video](https://youtu.be/LmRygvCbrOY)
